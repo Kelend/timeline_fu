@@ -31,6 +31,11 @@ module TimelineFu
             memo
           end
           create_options[:event_type] = event_type.to_s
+	  
+	  create_options[:actor_data] = create_options[:actor].to_json unless create_options[:actor].blank?
+	  create_options[:subject_data] = create_options[:subject].to_json unless create_options[:subject].blank?
+	  create_options[:secondary_subject_data] = create_options[:secondary_subject].to_json unless create_options[:secondary_subject].blank?
+
 
           TimelineEvent.create!(create_options)
         end
